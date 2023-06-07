@@ -1,0 +1,20 @@
+<mat-card>
+    <div class="header">
+        <div>
+            <button mat-button style="width: 150px;">Anjali's Kitchen</button>
+        </div>
+        <div class="sub-header">
+            <button mat-button class="botton">Login</button>
+            <button mat-button [matMenuTriggerFor]="menu" #dropdown="matMenuTrigger"
+                (mouseenter)="dropdown.openMenu()">Project</button>
+            <mat-menu #menu="matMenu">
+                <span (mouseleave)="dropdown.closeMenu()">
+                    <button mat-menu-item>Profile</button>
+                    <button mat-menu-item>Orders</button>
+                    <button mat-menu-item>Logout</button>
+                </span>
+            </mat-menu>
+            <button mat-button>Cart{{count}}</button>
+        </div>
+    </div>
+</mat-card>
