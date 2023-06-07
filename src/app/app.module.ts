@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { Foods } from './models/food';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
