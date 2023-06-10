@@ -22,7 +22,7 @@ export class CardComponent {
     origins: []
   }
 
-  fav : boolean = true;
+  fav : boolean = false;
 
   setStyles():any{
     if(this.route.routeConfig?.path == 'food'){
@@ -32,7 +32,6 @@ export class CardComponent {
 
   changeColor(){
     this.fav = !this.fav;
-    return this.fav;
   }
 
 }
