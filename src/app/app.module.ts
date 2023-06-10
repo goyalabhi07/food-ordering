@@ -13,14 +13,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import { Foods } from './models/food';
+import { CardComponent } from './Components/card/card.component';
+import { FoodComponent } from './Components/food/food.component';
+import { NgbRatingModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
     CartComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardComponent,
+    FoodComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,8 @@ import { Foods } from './models/food';
     MatSelectModule,
     MatButtonModule,
     MatMenuModule,
+    NgbRatingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

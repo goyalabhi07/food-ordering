@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Foods} from '../models/food';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,15 +8,15 @@ export class FoodServiceService {
 
   constructor() { }
 
-  getFoodData():Foods[]{
-    return[
+  getFoodData():Observable<Foods[]>{
+    const data=[
       {
         id:1,
         name: 'Pizza',
         price: 200,
         cookTime: '20-30',
         favourite: true,
-        origins: ['Italy'],
+        origins: ['Italy', 'Persia'],
         stars: 4.0,
         imageUrl: '/assets/Images/pizza.jpeg',
         tags: ['FastFood', 'Pizza', 'Lunch']
@@ -26,7 +27,7 @@ export class FoodServiceService {
         price: 20,
         cookTime: '5-10',
         favourite: false,
-        origins: ['India'],
+        origins: ['India','china'],
         stars: 5.0,
         imageUrl: '/assets/Images/golgappe.jpg',
         tags: ['FastFood']
@@ -48,7 +49,7 @@ export class FoodServiceService {
         price: 200,
         cookTime: '20-30',
         favourite: false,
-        origins: ['Italy'],
+        origins: ['Italy','Japan','Russia'],
         stars: 4.0,
         imageUrl: '/assets/Images/pizza.jpeg',
         tags: ['FastFood', 'Pizza', 'Lunch']
@@ -59,7 +60,7 @@ export class FoodServiceService {
         price: 20,
         cookTime: '5-10',
         favourite: false,
-        origins: ['India'],
+        origins: ['India','Pakistan'],
         stars: 5.0,
         imageUrl: '/assets/Images/golgappe.jpg',
         tags: ['FastFood']
@@ -109,6 +110,6 @@ export class FoodServiceService {
       },
       
     ];
-    
+    return of (data);
   }
 }

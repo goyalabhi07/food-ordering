@@ -1,8 +1,5 @@
-<div *ngFor="let food of foods">
-    <mat-card>
-        <img src="{{food.imageUrl}}" alt={{food.name}}>
-        <mat-card-content>
-            <strong>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</strong>
-        </mat-card-content>
-    </mat-card>
+<div class="main-container">
+    <div class="food-card" *ngFor="let food of foods" (click)="openFoods(food)">
+        <app-card [data]="food"></app-card>
+    </div>
 </div>

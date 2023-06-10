@@ -1,0 +1,27 @@
+<div [ngClass]="{'home-card':!setStyles(),'food-card':setStyles()}">
+    <div class="food-image">
+        <img src={{data.imageUrl}} alt={{data.name}}>
+    </div>
+    <div class="lower">
+        <div class="bottom">
+            <div class="left">
+                <div class="name">{{data.name}}</div>
+                <div class="stars">
+                    <ngb-rating [max]="5"></ngb-rating>
+                </div>
+                <div class="tags">
+                    <div class="tag" *ngFor="let tag of data.origins">
+                        <span>{{tag}}</span>
+                    </div>
+                </div>
+                <div class="price">${{data.price}}</div>
+                <div *ngIf="setStyles()">Time to cook about {{data.cookTime}} minutes</div>
+            </div>
+            <div class="right">
+                <div class="fav-icon" (click)="changeColor()" [ngStyle]="{'color': fav? 'red' : 'gray'}">&hearts;</div>
+                <div *ngIf="!setStyles()" class="cook-time">{{data.cookTime}}</div>
+            </div>
+        </div>
+        <div *ngIf="setStyles()" class="cart">Add to cart</div>
+    </div>
+</div>
