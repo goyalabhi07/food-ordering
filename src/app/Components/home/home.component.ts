@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FoodServiceService } from 'src/app/Services/food-service.service';
 import { Foods } from 'src/app/models/food';
 
@@ -11,10 +12,18 @@ export class HomeComponent {
 
   foods: Foods[] = [];
 
-  constructor(private fs:FoodServiceService){}
+  constructor(private fs:FoodServiceService, private router:Router){}
 
   ngOnInit(): void {
-    this.foods = this.fs.getFoodData();
+    this.fs.getFoodData().subscribe(data =>{
+      this.foods = data;
+    });
+  }
+
+  openFoods(data:any){
+    console.log("hi from cards");
+    this.router.navigate(['/food'], { queryParams: { id: data.id } });
+    
   }
 
 }
