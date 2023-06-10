@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Foods } from 'src/app/models/food';
 
@@ -7,10 +7,10 @@ import { Foods } from 'src/app/models/food';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent {
+export class CardComponent implements OnInit{
 
-  constructor(private route: ActivatedRoute){}
-
+  isFoodComponent:boolean = false;
+  fav : boolean = false;
   @Input() data : Foods={
     id: 0,
     price: 0,
@@ -22,16 +22,15 @@ export class CardComponent {
     origins: []
   }
 
-  fav : boolean = false;
-
-  setStyles():any{
-    if(this.route.routeConfig?.path == 'food'){
-      return true;
-    }
-  }
-
   changeColor(){
     this.fav = !this.fav;
   }
 
+  constructor(private route: ActivatedRoute){}
+
+  ngOnInit(): void {
+    if(this.route.routeConfig?.path == 'food'){
+      this.isFoodComponent = true;
+    }
+  }
 }

@@ -11,7 +11,6 @@ import { Foods } from 'src/app/models/food';
 export class FoodComponent {
 
   food: any ;
-  id: number=-1;
 
   constructor(private fs: FoodServiceService, private route: ActivatedRoute) { }
 
@@ -19,14 +18,8 @@ export class FoodComponent {
     this.fs.getFoodData().subscribe(data => {
       this.route.queryParams
       .subscribe(params => {        
-        console.log(this.route);
-        this.id = params['id'];        
+        this.food = data.filter( e => e.id == params['id'])
       });
-      this.food = data.filter( (e) => {
-        return e.id == this.id
-      })
-    });
-    console.log(this.route.routeConfig?.path);
-    
+    });    
   }
 }

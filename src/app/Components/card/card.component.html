@@ -1,4 +1,4 @@
-<div [ngClass]="{'home-card':!setStyles(),'food-card':setStyles()}">
+<div [ngClass]="{'home-card':!isFoodComponent,'food-card':isFoodComponent}">
     <div class="food-image">
         <img src={{data.imageUrl}} alt={{data.name}}>
     </div>
@@ -15,13 +15,13 @@
                     </div>
                 </div>
                 <div class="price">${{data.price}}</div>
-                <div *ngIf="setStyles()">Time to cook about {{data.cookTime}} minutes</div>
+                <div *ngIf="isFoodComponent">Time to cook about {{data.cookTime}} minutes</div>
             </div>
             <div class="right">
-                <div class="fav-icon" (click)="changeColor()" [ngStyle]="{'color': fav? 'red' : 'gray'}">&hearts;</div>
-                <div *ngIf="!setStyles()" class="cook-time">{{data.cookTime}}</div>
+                <div class="fav-icon" (click)="fav = !fav" [ngStyle]="{'color': fav? 'red' : 'gray'}">&hearts;</div>
+                <div *ngIf="!isFoodComponent" class="cook-time">{{data.cookTime}}</div>
             </div>
         </div>
-        <div *ngIf="setStyles()" class="cart">Add to cart</div>
+        <button *ngIf="isFoodComponent" class="cart">Add to cart</button>
     </div>
 </div>
