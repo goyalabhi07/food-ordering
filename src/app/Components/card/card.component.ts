@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FoodServiceService } from 'src/app/Services/food-service.service';
 import { Foods } from 'src/app/models/food';
 
 @Component({
@@ -22,15 +23,22 @@ export class CardComponent implements OnInit{
     origins: []
   }
 
-  changeColor(){
-    this.fav = !this.fav;
-  }
-
-  constructor(private route: ActivatedRoute){}
-
+  constructor(private route: ActivatedRoute, private router: Router, private fs: FoodServiceService){}
+  
   ngOnInit(): void {
     if(this.route.routeConfig?.path == 'food'){
       this.isFoodComponent = true;
     }
   }
+
+  changeColor(){
+    this.fav = !this.fav;
+  }
+
+  sendToCart(data:Foods){
+    this.fs.addCartItems(data);
+    this.router.navigateByUrl('/cart')
+  }
+
+
 }

@@ -10,16 +10,24 @@ import { Foods } from 'src/app/models/food';
 })
 export class FoodComponent {
 
-  food: any ;
+  data: any ;
+  fav : boolean = false;
 
-  constructor(private fs: FoodServiceService, private route: ActivatedRoute) { }
+  constructor(private fs: FoodServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.fs.getFoodData().subscribe(data => {
-      this.route.queryParams
+    this.route.queryParams
       .subscribe(params => {        
-        this.food = data.filter( e => e.id == params['id'])
-      });
-    });    
+        this.data = this.fs.foodData.filter( ((e: Foods) => e.id == params['id']))[0]       
+       });    
+  }
+
+  changeColor(){
+    this.fav = !this.fav;
+  }
+
+  sendToCart(){
+    this.fs.addCartItems(this.data);
+    this.router.navigateByUrl('/cart')
   }
 }

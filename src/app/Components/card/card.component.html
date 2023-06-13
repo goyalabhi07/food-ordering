@@ -22,6 +22,6 @@
                 <div *ngIf="!isFoodComponent" class="cook-time">{{data.cookTime}}</div>
             </div>
         </div>
-        <button *ngIf="isFoodComponent" class="cart">Add to cart</button>
+        <button *ngIf="isFoodComponent" (click)="sendToCart(data)" class="cart">Add to cart</button>
     </div>
 </div>

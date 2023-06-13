@@ -1,1 +1,30 @@
-<p>cart works!</p>
+<h2 class="heading">Cart Page</h2>
+<div *ngIf="cartItems.length==0" class="emptyCart">
+    <h2>Your Cart is Empty</h2>
+    <button mat-button [routerLink]="'/'">Go to Home Page</button>
+</div>
+<div *ngIf="cartItems.length!=0" class="cart">
+    <div class="cartItems">
+        <div *ngFor="let item of cartItems" class="cartItem">
+            <img src={{item.imageUrl}} alt={{item.name}}>
+            <div class="name">{{item.name}}</div>
+            <div class="quantity">
+                <select (change)="changeQuantity($event.target,item)" [(ngModel)]="item.qty">
+                    <option *ngFor="let qty of maxQuantity" [value]="qty">
+                        {{qty}}
+                    </option>
+                </select>
+            </div>
+            <div class="price">Rs{{item.price}}</div>
+            <button mat-button class="remove">Remove</button>
+        </div>
+        <br>
+    </div>
+    <div class="total" *ngIf="cartItems.length!=0">
+        <div class="counts">
+            <div>Count: {{totalQty}}</div>
+            <div style="margin-top: 30px;">Price: Rs{{totalPrice}}</div>
+        </div>
+        <button mat-button>Proceed to Checkout</button>
+    </div>
+</div>

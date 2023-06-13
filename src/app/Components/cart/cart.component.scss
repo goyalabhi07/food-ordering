@@ -1,0 +1,97 @@
+.heading {
+    margin: 20px;
+    font-size: x-large;
+    color: grey;
+}
+
+.emptyCart {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: center;
+    font-size: large;
+    color: rgb(235, 129, 129);
+    align-items: center;
+
+    button{
+        color: white;
+        background-color: red;
+        border-radius: 2rem;
+    }
+}
+
+.cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2rem;
+    width: 95%;
+
+    .cartItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 2rem;
+        border-color: rgb(235, 129, 129);
+        width: 900px;
+        height: fit-content;
+
+        .cartItem {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-color: rgb(248, 222, 222);
+
+        }
+
+        img {
+            height: 5rem;
+            width: 5rem;
+            margin-top: 10px;
+            border-radius: 100%;
+        }
+
+        .quantity {
+            width: 5px;
+            height: 5px;
+            margin-bottom: 15px;
+        }
+
+        .remove {
+            color: rgb(235, 129, 129);
+            background-color: rgb(204, 201, 201);
+            border-radius: 2rem;
+        }
+
+    }
+
+    .total {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        margin-left: 15px;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 2rem;
+        border-color: rgb(235, 129, 129);
+
+        .counts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 70px;
+        }
+
+        button {
+            background-color: rgb(255, 74, 3);
+            border-radius: 1rem;
+        }
+    }
+}

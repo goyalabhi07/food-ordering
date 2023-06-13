@@ -14,7 +14,7 @@
                     <button mat-menu-item>Logout</button>
                 </span>
             </mat-menu>
-            <button mat-button>Cart{{count}}</button>
+            <button mat-button [routerLink]="'/cart'">Cart{{count.length}}</button>
         </div>
     </div>
 </mat-card>

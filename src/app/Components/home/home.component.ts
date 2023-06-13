@@ -21,7 +21,6 @@ export class HomeComponent {
   }
 
   openFoods(data:any){
-    console.log("hi from cards");
     this.router.navigate(['/food'], { queryParams: { id: data.id } });
     
   }
