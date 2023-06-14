@@ -13,8 +13,6 @@ export class HeaderComponent implements OnInit {
   constructor(private fs:FoodServiceService){}
   ngOnInit(): void {
     this.count= this.fs.getCartItems();
-    console.log(this.count.length);
-    
   }
 
 

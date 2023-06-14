@@ -20,20 +20,17 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cartItems = this.fs.getCartItems()
-    // this.totalPrice = this.fs.getPriceandQuantity().price;
-    
-    this.totalQty = this.fs.getPriceandQuantity().qty;
+
+    const {price,qty} = this.fs.getPriceandQuantity();
+    this.totalPrice = price;
+    this.totalQty = qty;
   }
 
-  changeQuantity(qty: any, data: CartItems) {
-    this.fs.changeItemQty(qty.value, data);
-    this.fs.totalPriceChange.subscribe(value =>{
-      this.totalPrice = value;
-  })
-    // this.totalPrice = this.fs.getPriceandQuantity().price;
-    this.totalQty = this.fs.getPriceandQuantity().qty;
-    
+  changeQuantity(quantity: any, data: CartItems) {
+    this.fs.changeItemQty(quantity.value, data);
+
+     const {price,qty} = this.fs.getPriceandQuantity();
+    this.totalPrice = price;
+    this.totalQty = qty;
   }
-
-
 }

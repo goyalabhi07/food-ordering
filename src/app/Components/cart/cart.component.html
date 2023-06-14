@@ -9,7 +9,7 @@
             <img src={{item.imageUrl}} alt={{item.name}}>
             <div class="name">{{item.name}}</div>
             <div class="quantity">
-                <select (change)="changeQuantity($event.target,item)" [(ngModel)]="item.qty">
+                <select (change)="changeQuantity($event.target,item)">
                     <option *ngFor="let qty of maxQuantity" [value]="qty">
                         {{qty}}
                     </option>

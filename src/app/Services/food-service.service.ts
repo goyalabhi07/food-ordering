@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Foods } from '../models/food';
-import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
+import {  Observable, of } from 'rxjs';
 import { CartItems } from '../models/cartItems';
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ export class FoodServiceService {
 
   foodData: any;
   totalPrice: number = 0;
-  totalPriceChange: Subject<number> = new Subject<number>();
   totalQty: number = 0;
   cartFoodItems: CartItems[] = [];
+  
   constructor() { 
-    }
+  }
 
   getFoodData(): Observable<Foods[]> {
     const data = [
@@ -127,16 +127,12 @@ export class FoodServiceService {
     this.totalQty++;
     if (obj) {
       obj.qty++;
-      // this.totalPrice+= obj.price;
-      // this.totalQty++;
     }
     else {
       const newobj = {
         ...data,
         qty: 1
       }
-      // this.totalPrice+=newobj.price;
-      // this.totalQty++;
       this.cartFoodItems = [...this.cartFoodItems,newobj] //naya tareeka using spread operator
       //this.cartFoodItems.push(newobj) also can do this
     }
@@ -148,23 +144,19 @@ export class FoodServiceService {
 
   changeItemQty(qty:number,data:CartItems){
     //tqty, tprice, data.qty
-    console.log(qty,data);
-    const index=this.cartFoodItems.findIndex( c =>{
+
+    const index = this.cartFoodItems.findIndex( c =>{
       return c.id == data.id
     })
     let prevQuantity=this.cartFoodItems[index].qty;
-    this.totalPrice+=(qty- prevQuantity)*data.price;
-    this.totalPriceChange.next(this.totalPrice);
-    this.totalQty+=(qty- prevQuantity)
+    this.totalPrice += (qty- prevQuantity)*data.price;
+    this.totalQty+=(qty- prevQuantity);
     this.cartFoodItems[index].qty=qty;
-    
   }
 
-  getPriceandQuantity(){
+  getPriceandQuantity(){    
     return {price:this.totalPrice,qty:this.totalQty}
   }
-
-
 }
 
   
