@@ -26,10 +26,9 @@ export class CartComponent implements OnInit {
     this.totalQty = qty;
   }
 
-  changeQuantity(quantity: any, data: CartItems) {
+  changeQuantity(quantity: any, data: CartItems) { 
     this.fs.changeItemQty(quantity.value, data);
-
-     const {price,qty} = this.fs.getPriceandQuantity();
+    const {price,qty} = this.fs.getPriceandQuantity();
     this.totalPrice = price;
     this.totalQty = qty;
   }

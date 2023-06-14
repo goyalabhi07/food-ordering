@@ -144,7 +144,6 @@ export class FoodServiceService {
 
   changeItemQty(qty:number,data:CartItems){
     //tqty, tprice, data.qty
-
     const index = this.cartFoodItems.findIndex( c =>{
       return c.id == data.id
     })
